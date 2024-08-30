@@ -1,3 +1,70 @@
+/**********************/
+/** FONT ASSIGNMENTS **/
+/**********************/
+@font-face {
+  font-family: "Kalam";
+  src: url("/fonts/Kalam/Kalam-Regular.ttf");
+}
+@font-face {
+  font-family: "Plus Jakarta";
+  src: url("/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Plus Jakarta";
+  src: url("/fonts/Plus_Jakarta_Sans/PlusJakartaSans-Italic-VariableFont_wght.ttf");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("/fonts/RobotoSlab/RobotoSlab-Light.ttf");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("/fonts/RobotoSlab/RobotoSlab-Regular.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("/fonts/RobotoSlab/RobotoSlab-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Overpass";
+  src: url("/fonts/Overpass/OVERPASS-REGULAR.TTF");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Overpass";
+  src: url("/fonts/Overpass/OVERPASS-LIGHT.TTF");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Overpass";
+  src: url("/fonts/Overpass/OVERPASS-EXTRALIGHT.TTF");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Overpass";
+  src: url("/fonts/Overpass/OVERPASS-SEMIBOLD.TTF");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Overpass";
+  src: url("/fonts/Overpass/OVERPASS-EXTRABOLD.TTF");
+  font-weight: 600;
+}
+
+
 :root {
   --base-bg: hsl(259, 53%, 62%);
   --base-container: #FFF8E5;
@@ -30,15 +97,146 @@
 
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--jakarta);
+  overflow: hidden;
+}
+
 main {
-  background-color: rgb(215, 221, 48);
+  background-color: hsl(var(--accent2));
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-body {
-  margin: 0;
-  padding: 0;
+.drawer {
+  padding: 2rem;
+}
+
+.dresser {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-frame {
+  border-radius: 48px;
+  background-color: var(--base-container);
+  padding: 2rem;
+}
+
+.main-content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dpad {
+  position: relative;
+  width: calc(100% + (4 * 2rem));
+  height: calc(100% + (2 * 2rem));
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* display: grid; */
+  /* grid-template-areas: "... ... top ... ..." "lft ... ... ... rgt" "... ... btm ... ..."; */
+}
+
+.dpad button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: var(--robo);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+
+  width: max-content;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dpad button::after {
+  content: "";
+  display: block;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 50px;
+  height: 50px;
+  background: hsl(var(--accent2));
+  border-radius: 16px;
+  transition: transform 0.2s;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.dpad .top {
+  top: 2rem;
+  left: calc(50% - 4rem);
+  right: 50%;
+}
+
+.dpad .top::after {
+  transform: rotate(45deg) translate(-2.6rem, -2.6rem);
+}
+
+.dpad .top:hover::after {
+  transform: rotate(45deg) translate(-2.3rem, -2.3rem);
+}
+
+.dpad .lft {
+  left: -5rem;
+  top: 50%;
+  bottom: 50%;
+  transform: rotate(-90deg);
+}
+
+.dpad .lft::after {
+  transform: rotate(135deg) translate(-2.6rem, 2.6rem);
+}
+
+.dpad .lft:hover::after {
+  transform: rotate(135deg) translate(-2.3rem, 2.3rem);
+}
+
+.dpad .rgt {
+  right: -5rem;
+  top: 50%;
+  bottom: 50%;
+  transform: rotate(90deg);
+}
+
+.dpad .rgt::after {
+  transform: rotate(-135deg) translate(2.8rem, 2.8rem);
+}
+
+.dpad .rgt:hover::after {
+  transform: rotate(-135deg) translate(2.5rem, 2.5rem);
+}
+
+.dpad .btm {
+  bottom: 2rem;
+  left: calc(50% - 6rem);
+  right: 50%;
+}
+
+.dpad .btm::after {
+  transform: rotate(45deg) translate(2.6rem, 2.6rem);
+}
+
+.dpad .btm:hover::after {
+  transform: rotate(45deg) translate(2.3rem, 2.3rem);
 }
