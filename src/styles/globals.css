@@ -1,0 +1,44 @@
+:root {
+  --base-bg: hsl(259, 53%, 62%);
+  --base-container: #FFF8E5;
+  --base-txt: #1E1A35;
+  --secondary-txt: #867D64;
+  --secondary-txt-lt: #CDC7AF;
+  --subtle-border: rgba(205, 199, 175, 0.15);
+  --shadow: rgba(197, 192, 172, 0.3);
+
+  --accent1-txt: 255, 255, 255;
+  --accent1-txt: 255, 255, 255;
+  --accent1-txt: 255, 255, 255;
+
+  --accent1: 259, 53%, 62%;
+  --accent2: 151, 53%, 62%;
+  --accent3: 349, 95%, 62%;
+  
+  --accent1-dk: 259;
+  --accent2-dk: 151;
+  --accent3-dk: 349;
+
+  --accent1-lt: 259, 53%;
+  --accent2-lt: 151, 53%;
+  --accent3-lt: 349, 95%;
+
+  --jakarta: "Plus Jakarta", "Roboto", "sans-serif";
+  --robo: "Roboto Slab", serif;
+  --overpass: "Overpass", "Work Sans", sans-serif;
+  --pioggia: "Pioggia", "Vidaloka", "DM Serif Display", "Libre Baskerville", serif;
+
+}
+
+main {
+  background-color: rgb(215, 221, 48);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
