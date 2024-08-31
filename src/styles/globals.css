@@ -113,7 +113,11 @@ main {
 }
 
 .drawer {
-  padding: 2rem;
+  padding: 4rem 2rem;
+}
+
+.drawer h2 {
+  text-transform: capitalize;
 }
 
 .dresser {
@@ -205,11 +209,11 @@ main {
 }
 
 .dpad .lft::after {
-  transform: rotate(135deg) translate(-2.6rem, 2.6rem);
+  transform: rotate(135deg) translate(-2.5rem, 2.5rem);
 }
 
 .dpad .lft:hover::after {
-  transform: rotate(135deg) translate(-2.3rem, 2.3rem);
+  transform: rotate(135deg) translate(-2.2rem, 2.2rem);
 }
 
 .dpad .rgt {
@@ -220,11 +224,11 @@ main {
 }
 
 .dpad .rgt::after {
-  transform: rotate(-135deg) translate(2.8rem, 2.8rem);
+  transform: rotate(-135deg) translate(2.7rem, 2.7rem);
 }
 
 .dpad .rgt:hover::after {
-  transform: rotate(-135deg) translate(2.5rem, 2.5rem);
+  transform: rotate(-135deg) translate(2.4rem, 2.4rem);
 }
 
 .dpad .btm {
