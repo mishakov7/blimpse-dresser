@@ -8,9 +8,27 @@ export default function Frame(props) {
     const margin = 2;
 
     useLayoutEffect(() => {
-        let targetW = frameWidth - props.drawerWidth;
-        let targetH = frameHeight - props.drawerHeight;
-        // animateDrawer(frameWidth, setFrameWidth, targetW);
+        let target;
+
+        if (props.direction == "left" || props.direction == "right") {
+            target = frameWidth - props.drawerWidth;
+            animateDrawer(frameWidth, setFrameWidth, target);
+
+        } else if (props.direction == "top" || props.direction == "bottom") {
+            target = frameHeight - props.drawerHeight;
+            animateDrawer(frameHeight, setFrameHeight, target);
+
+        } else if (props.direction == "hide-left" || props.direction == "hide-right") {
+            target = 100;
+            animateDrawer(frameWidth, setFrameWidth, target);
+            console.log("hiding.... setting width back to 100%");
+            
+        } else if (props.direction == "hide-top" || props.direction == "hide-bottom") {
+            target = 100;
+            animateDrawer(frameHeight, setFrameHeight, target);
+            console.log("hiding.... setting height back to 100%");
+
+        }
 
     }, [props.direction]);
 
