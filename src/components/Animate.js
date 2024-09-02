@@ -9,37 +9,35 @@
  * (s) duration = duration that the animation should run
  * (ss) setDuration
  */
-export const animateDrawer = (current, setCurrent, target/*, setDrawer*/) => {
-    const duration = 400;
+export const animateDrawer = (current, setCurrent, target, ratio) => {
+    let duration = 400;
     let difference = current - target;
+
+    // if (difference < 10) {
+    //     duration = 200;
+    // }
+
     let increment = ( 10 * Math.abs(difference) ) / duration;
 
-    console.log("diff: " + difference + " = " + current + " - " + target);
     let copy = current;
     // let count = 0;
-
-    // console.log(increment);
 
     const interval = setInterval(() => {
         // console.log(count);
 
         if (difference < 0) {
             copy = copy + increment;
-            console.log("negative diff");
-            console.log(copy);
         } else {
             copy = copy - increment;
-            console.log("positive diff");
         }
 
         setCurrent(copy);
 
+        if (copy == target) {
+            clearInterval(interval);
+            return;
+        }
         // ++count;
     }, 10);
 
-    setTimeout(() => {
-        clearInterval(interval);
-        setCurrent(target);
-        // setDrawer(Math.abs(difference));
-    }, duration + (duration * 0.6));
 }

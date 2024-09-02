@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Frame from './Frame';
 import Example1 from './Example1';
+import { usePreviousValue } from './util/usePreviousValue';
 import { animateDrawer } from './Animate';
 
 const leftDrawer = {
@@ -12,37 +13,61 @@ const leftDrawer = {
 const topDrawer = {
     direction: "top",
     width: 100,
-    height: 60
+    height: 5
 }
 
 const bottomDrawer = {
     direction: "bottom",
     width: 100,
-    height: 45
+    height: 25
 }
 
 const rightDrawer = {
     direction: "right",
-    width: 75,
+    width: 50,
     height: 100
 }
 
 export default function Dresser(props) {
     const [direction, setDirection] = useState("hide");
+    const prevDirection = usePreviousValue(direction, "hide");
+
     const [width, setWidth] = useState(0);
     const [tempWidth, setTempWidth] = useState(0);
     const [height, setHeight] = useState(0);
     const [tempHeight, setTempHeight] = useState(0);
 
+    function hideDrawer(dir) {
+        setDirection("hide-" + dir);
+        setTempWidth(0);
+        setTempHeight(0);
+    }
+
+    function showDrawer(drawer) {
+        setDirection(drawer.direction);
+        setTempWidth(drawer.width);
+        setTempHeight(drawer.height);
+    }
+
     const toggleDrawer = (obj) => {
         if (direction == obj.direction) {
-            setDirection("hide-" + obj.direction);
-            setTempWidth(0);
-            setTempHeight(0);
+            hideDrawer(obj.direction);
+
+        } else if (prevDirection != "hide") {
+            hideDrawer(prevDirection);
+
+            setTimeout(() => {
+                setDirection("hide");
+                setWidth(0);
+                setHeight(0);
+            }, 400 + (400 * 0.6));
+
+            setTimeout(() => {
+                showDrawer(obj);
+            }, 400 + (400 * 1.2));
+
         } else {
-            setDirection(obj.direction);
-            setTempWidth(obj.width);
-            setTempHeight(obj.height);
+            showDrawer(obj);
         }
     }
 
@@ -57,7 +82,7 @@ export default function Dresser(props) {
         
         } else if (direction == "top" || direction == "bottom") {
             target = tempHeight - height;
-            setWidth(100);
+            setWidth(95);
             animateDrawer(height, setHeight, target);
         
         } else if (direction == "hide-left" || direction == "hide-right") {
@@ -73,7 +98,7 @@ export default function Dresser(props) {
             
         } else if (direction == "hide-top" || direction == "hide-bottom") {
             target = 0;
-            setWidth(100);
+            setWidth(95);
             animateDrawer(height, setHeight, target);
 
             setTimeout(() => {

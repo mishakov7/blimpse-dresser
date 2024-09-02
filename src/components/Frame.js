@@ -21,12 +21,10 @@ export default function Frame(props) {
         } else if (props.direction == "hide-left" || props.direction == "hide-right") {
             target = 100;
             animateDrawer(frameWidth, setFrameWidth, target);
-            console.log("hiding.... setting width back to 100%");
             
         } else if (props.direction == "hide-top" || props.direction == "hide-bottom") {
             target = 100;
             animateDrawer(frameHeight, setFrameHeight, target);
-            console.log("hiding.... setting height back to 100%");
 
         }
 

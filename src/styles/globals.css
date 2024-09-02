@@ -113,11 +113,34 @@ main {
 }
 
 .drawer {
-  padding: 4rem 2rem;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.drawer.row {
+  flex-direction: row;
+  padding: 0 2rem;
+}
+
+.drawer.col {
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.drawer.row .inner {
+  display: flex;
+  align-items: baseline;
 }
 
 .drawer h2 {
   text-transform: capitalize;
+  margin-right: 1rem;
+}
+
+.drawer p {
+  margin-right: 1rem;
 }
 
 .dresser {
@@ -129,6 +152,7 @@ main {
   border-radius: 48px;
   background-color: var(--base-container);
   padding: 2rem;
+  /* transition: width 0.1s; */
 }
 
 .main-content {
@@ -185,6 +209,8 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
+
+  z-index: 1;
 }
 
 .dpad .top {
