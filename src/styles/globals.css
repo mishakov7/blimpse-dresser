@@ -112,11 +112,32 @@ main {
   align-items: center;
 }
 
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  } to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+
 .drawer {
   display: flex;
   align-items: flex-start;
   position: relative;
+  animation: fadein 0.4s forwards;
   z-index: 20;
+}
+
+.drawer.hiding {
+  animation: fadeout 0.2s forwards;
 }
 
 .drawer.row {

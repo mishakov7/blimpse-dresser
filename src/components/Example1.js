@@ -4,7 +4,7 @@ export default function Example1(props) {
 
     return(
         <>
-            <div className={'drawer ' + (props.drawerWidth >= 95 ? "row" : "col")} style={{width: props.drawerWidth + "%", height: props.drawerHeight + "%",  }}>
+            <div className={'drawer ' + (props.drawerWidth >= 95 ? "row" : "col") + (props.name.includes("hide") ? " hiding" : "")} style={{width: props.drawerWidth + "%", height: props.drawerHeight + "%",  }}>
                 <div className='inner'>
                     <h2>{props.name} Drawer </h2>
 
