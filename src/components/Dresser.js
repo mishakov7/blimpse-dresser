@@ -3,30 +3,7 @@ import Frame from './Frame';
 import Example1 from './Example1';
 import { usePreviousValue } from './util/usePreviousValue';
 import { animateDrawer } from './Animate';
-
-const leftDrawer = {
-    direction: "left",
-    width: 25,
-    height: 100
-}
-
-const topDrawer = {
-    direction: "top",
-    width: 100,
-    height: 5
-}
-
-const bottomDrawer = {
-    direction: "bottom",
-    width: 100,
-    height: 25
-}
-
-const rightDrawer = {
-    direction: "right",
-    width: 50,
-    height: 100
-}
+import { leftDrawer, rightDrawer, topDrawer, bottomDrawer } from './constants/drawers';
 
 export default function Dresser(props) {
     const [direction, setDirection] = useState("hide");
@@ -123,6 +100,12 @@ export default function Dresser(props) {
                     <button onClick={() => toggleDrawer(leftDrawer)} className="lft">Toggle Left Drawer</button>
                     <button onClick={() => toggleDrawer(rightDrawer)} className="rgt">Toggle Right Drawer</button>
                     <button onClick={() => toggleDrawer(bottomDrawer)} className="btm">Toggle Bottom Drawer</button>
+                </div>
+
+                <div className="readme">
+                    <h1 style={{ textTransform: "lowercase" }}>Blimpse</h1>
+                    <span className='subtitle'>Dresser System</span>
+                    <p>1. Fix timing, 2. Have drawer fade out prior to resize</p>
                 </div>
             </Frame>
 
