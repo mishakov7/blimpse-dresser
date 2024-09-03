@@ -105,7 +105,7 @@ export default function Dresser(props) {
                 <div className="readme">
                     <h1 style={{ textTransform: "lowercase" }}>Blimpse</h1>
                     <span className='subtitle'>Dresser System</span>
-                    <p>1. Fix timing, 2. Have drawer fade out prior to resize</p>
+                    <p>Explore the most striking feature of the Blimpse design- the dresser/drawer system! This demo re-uses the same component to open drawers from the left, top, right, and bottom at different sizes. I will optimize this system in the future to make it easier for anyone to use!</p>
                 </div>
             </Frame>
 
