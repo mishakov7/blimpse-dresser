@@ -15,9 +15,11 @@ export const animateDrawer = (current, setCurrent, target, ratio) => {
 
     if (Math.abs(difference) < 25) {
         duration = duration / 2;
-    } else if (Math.abs(difference) >= 50) {
+    } /*else if (Math.abs(difference) >= 50) {
         duration = duration * 2;
-    }
+    }*/
+
+    console.log("duraiton: " + duration);
 
     let increment = ( 10 * Math.abs(difference) ) / duration;
 

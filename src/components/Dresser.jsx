@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Frame from './Frame';
-import Example1 from './Example1';
+import Drawer from './Drawer';
 import { usePreviousValue } from './util/usePreviousValue';
 import { animateDrawer } from './Animate';
 import { leftDrawer, rightDrawer, topDrawer, bottomDrawer } from './constants/drawers';
@@ -87,30 +87,48 @@ export default function Dresser(props) {
 
     }, [direction]);
 
+    useEffect(() => {
+        switch(props.direction) {
+            case "top":
+                toggleDrawer(topDrawer);
+                break;
+            
+            case "left":
+                toggleDrawer(leftDrawer);
+                break;
+
+            case "bottom":
+                toggleDrawer(bottomDrawer);
+                break;
+
+            case "right":
+                toggleDrawer(rightDrawer);
+                break;
+
+            case "":
+                toggleDrawer("hide-" + direction);
+                break;
+        }
+
+    }, [props.direction])
+
     return(
         <>
         <div className='dresser' style={{display: "flex", justifyContent: "space-between", flexDirection: ( direction == "top" || direction == "bottom" || direction == "hide-top" || direction == "hide-bottom" ? "column" : "row") }}>
 
             { direction == "top" || direction == "left" || direction == "hide-top" || direction == "hide-left" ? 
-            <Example1 name={direction} drawerWidth={width} drawerHeight={height}/> : null }
+            <Drawer name={direction} drawerWidth={width} drawerHeight={height}>
+                {props.drawer}
+            </Drawer> : null }
 
             <Frame drawerWidth={tempWidth} drawerHeight={tempHeight} direction={direction} setDrawerWidth={setWidth} setDrawerHeight={setHeight}>
-                <div className="dpad">
-                    <button onClick={() => toggleDrawer(topDrawer)} className="top">Toggle Top Drawer</button>
-                    <button onClick={() => toggleDrawer(leftDrawer)} className="lft">Toggle Left Drawer</button>
-                    <button onClick={() => toggleDrawer(rightDrawer)} className="rgt">Toggle Right Drawer</button>
-                    <button onClick={() => toggleDrawer(bottomDrawer)} className="btm">Toggle Bottom Drawer</button>
-                </div>
-
-                <div className="readme">
-                    <h1 style={{ textTransform: "lowercase" }}>Blimpse</h1>
-                    <span className='subtitle'>Dresser System</span>
-                    <p>Explore the most striking feature of the Blimpse design- the dresser/drawer system! This demo re-uses the same component to open drawers from the left, top, right, and bottom at different sizes. I will optimize this system in the future to make it easier for anyone to use!</p>
-                </div>
+                {props.children}
             </Frame>
 
             { direction == "right" || direction == "bottom" || direction == "hide-right" || direction == "hide-bottom"? 
-            <Example1 name={direction} drawerWidth={width} drawerHeight={height} /> : null }
+            <Drawer name={direction} drawerWidth={width} drawerHeight={height}>
+                {props.drawer}
+            </Drawer> : null }
         </div>
         </>
     );

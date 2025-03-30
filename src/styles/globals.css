@@ -173,6 +173,8 @@ main {
   border-radius: 48px;
   background-color: var(--base-container);
   padding: 2rem;
+  transition: width 0.3s cubic-bezier(.5, 0,.5, 1);
+  /* transition: width 1s step-start; */
 }
 
 .main-content {
